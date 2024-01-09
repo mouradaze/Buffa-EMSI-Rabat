@@ -1,0 +1,25 @@
+<p>Titre = {{title}}</p>
+@for(assignement of assignements ; track assignement.nom){
+<!--<div [ngStyle]="{'color':assignement.done ? 'green' : 'red'}">-->
+<div [ngClass]="{'rendu':assignement.done,'nonRendu':!assignement.done}">
+
+
+    @if(assignement.done){
+        <p>Le devoir a été rendu le {{assignement.date |date:'dd/MM/yyyy'}} </p>
+    }
+    @else {
+        <p>Le devoir doit etre rendu le {{assignement.date |date:'dd/MM/yyyy'}} </p>
+    }
+    <!--<p>Le devoir {{assignement.nom}} est à rendre le {{assignement.date | date:"dd/MM/yyyy"}} rendu : {{assignement.done}}</p>-->
+
+</div>
+
+}
+<div>
+    <h3>Avec liste</h3>
+    <ul>
+        @for (a of assignements; track a.nom) {
+            <li [ngClass]="{'rendu':a.done,'nonRendu':!a.done}">Le devoir {{a.nom}} est à rendre le {{a.date | date:"dd/MM/yyyy"}} rendu : {{a.done}}</li>
+        }
+    </ul>
+</div>
