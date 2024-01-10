@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
+import { Assignement } from './assignement.model';
 
 
 @Component({
@@ -22,7 +23,11 @@ export class AssignementsComponent implements OnInit {
   nomDevoir = ""
   datePicked!:Date
   onSubmit(event:any){
-    console.log(this.nomDevoir+" d : "+this.datePicked)
+    const newAssignement = new Assignement()
+    newAssignement.nom = this.nomDevoir
+    newAssignement.date = this.datePicked
+    newAssignement.done = true
+    this.assignements.push(newAssignement)
 
   }
   ngOnInit():void{
@@ -32,20 +37,20 @@ export class AssignementsComponent implements OnInit {
   }
   title = "Assignement component is working !!!"
   isActive = false
-  assignements = [
+  assignements:Assignement[] = [
     {
       nom:'Name 1',
-      date:'2020-12-15',
+      date:new Date('2020-12-15'),
       done:true,
     },
     {
       nom:'Assignement 2',
-      date:'2024-01-09',
+      date:new Date('2024-01-09'),
       done:false,
     },
     {
       nom:'Assignement 3',
-      date:'2022-11-05',
+      date:new Date('2022-11-05'),
       done:true,
     },
   ]
