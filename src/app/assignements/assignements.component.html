@@ -16,8 +16,10 @@
 </form>
 {{nomDevoir}}
 
-@for(assignement of assignements ; track assignement.nom){
-<!--<div [ngStyle]="{'color':assignement.done ? 'green' : 'red'}">-->
+
+
+<!--@for(assignement of assignements ; track assignement.nom){
+<--<div [ngStyle]="{'color':assignement.done ? 'green' : 'red'}">--
 <div [ngClass]="{'rendu':assignement.done,'nonRendu':!assignement.done}">
 
 
@@ -27,21 +29,36 @@
     @else {
         <p>Le devoir doit etre rendu le {{assignement.date |date:'dd/MM/yyyy'}} </p>
     }
-    <!--<p>Le devoir {{assignement.nom}} est à rendre le {{assignement.date | date:"dd/MM/yyyy"}} rendu : {{assignement.done}}</p>-->
+    <!--<p>Le devoir {{assignement.nom}} est à rendre le {{assignement.date | date:"dd/MM/yyyy"}} rendu : {{assignement.done}}</p>--
 
 </div>
 
-}
+}-->
 <div>
     <h3>Avec liste</h3>
-    <ul>
+    <!--<ul>
         @for (a of assignements; track a.nom;let index = $index) {
-            
-            <li [ngClass]="{'rendu':a.done,'nonRendu':!a.done}">{{index}} / Le devoir {{a.nom}} est à rendre le {{a.date | date:"dd/MM/yyyy"}} rendu : {{a.done}}</li>
+            <div >
+                <li [ngClass]="{'rendu':a.done,'nonRendu':!a.done}" >
+                    {{index}} / Le devoir {{a.nom}} est à rendre le {{a.date | date:"dd/MM/yyyy"}} rendu : {{a.done}}
+                </li>
+            </div>
         }
-    </ul>
+    </ul>-->
+    <mat-list>
+        @for (a of assignements; track a.nom;let index = $index) {
+            <mat-list-item>
+                <h3 matListItemTitle>{{a.date | date:"dd/MM/yyyy"}}</h3>
+                <p matListItemLine>{{a.nom}}</p>
+                <p matListItemLine>{{a.done}}</p>
+            </mat-list-item>
+            
+        
+        }
+       </mat-list>
 </div>
-<div>
+<app-assignement-detail></app-assignement-detail>
+<!--<div>
     <h3>Using directives</h3>
     <ul>
         @for (a of assignements; track a.nom;let index = $index) {
@@ -49,4 +66,4 @@
             <li appRendu>{{index}} / Le devoir {{a.nom}} est à rendre le {{a.date | date:"dd/MM/yyyy"}} rendu : {{a.done}}</li>
         }
     </ul>
-</div>
+</div>-->

@@ -8,14 +8,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list'
 import { Assignement } from './assignement.model';
+import { AssignementDetailComponent } from './assignement-detail/assignement-detail.component';
 
 
 @Component({
   selector: 'app-assignements',
   standalone: true,
   imports: [CommonModule,RenduDirective,FormsModule,MatButtonModule,
-    MatDatepickerModule,MatFormFieldModule,MatInputModule,MatNativeDateModule],
+    MatDatepickerModule,MatFormFieldModule,MatInputModule,MatNativeDateModule,
+  AssignementDetailComponent,MatListModule],
   templateUrl: './assignements.component.html',
   styleUrl: './assignements.component.css'
 })
